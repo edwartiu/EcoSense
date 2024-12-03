@@ -68,6 +68,12 @@ void loop() {
   float uva = uvSensor.getUVA();
   float uvb = uvSensor.getUVB();
 
+  // Checks WiFi connection status
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+
+  }
+
   // Output data to serial monitor
   Serial.print("Soil Moisture: ");
   Serial.println(soilMoisture);
