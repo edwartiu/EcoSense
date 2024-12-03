@@ -6,6 +6,10 @@
 
 #define SOIL_SENSOR 25
 
+// Wi-Fi credentials
+const char* ssid = "WIFI_SSID";
+const char* password = "WIFI_PASSWORD";
+
 Adafruit_AHTX0 htSensor;
 SfeAS7331ArdI2C uvSensor;
 
