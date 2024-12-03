@@ -17,6 +17,17 @@ void setup() {
   delay(3000);
   Serial.begin(9600);
 
+  // Wi-Fi Setup
+  WiFi.begin(ssid, password);
+  Serial.println("Connecting");
+  while(WiFi.status()) != WL_CONNECTED {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println("");
+  Serial.print("Connected to WiFi network with IP address: ");
+  Serial.println(WiFi.localIP());
+
   // Soil Moisture Sensor Setup
   pinMode(SOIL_SENSOR, OUTPUT);
 
@@ -56,6 +67,12 @@ void loop() {
   delay(5 + uvSensor.getConversionTimeMillis());
   float uva = uvSensor.getUVA();
   float uvb = uvSensor.getUVB();
+
+  // Checks WiFi connection status
+  if (WiFi.status() == WL_CONNECTED) {
+    HTTPClient http;
+
+  }
 
   // Output data to serial monitor
   Serial.print("Soil Moisture: ");
