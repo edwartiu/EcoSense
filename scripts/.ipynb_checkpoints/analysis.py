@@ -20,5 +20,9 @@ lat2 = 34.0522 # Example latitude for Los Angeles
 lon2 = -118.2437 # Example longtitude for Los Angeles
 coordinates = np.array([[lat1, lon1], [lat2, lon2]])
 
-# Calculate distances between all points
+# Calculates distances between all points
 dist_matrix = distance.cdist(coordinates, coordinates, 'euclidean')
+
+# Implements linear regression
+def linear_regression(X, y):
+    return np.linalg.inv(X.T @ X) @ X.T @ y
