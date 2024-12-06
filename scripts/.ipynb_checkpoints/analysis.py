@@ -31,6 +31,10 @@ def linear_regression(X, y):
 # Loads our dataset
 df = pd.read_csv('/home/masudal/EcoSense/data/enviornmental_data.csv')
 
+X = df.drop(columns=['temperature']) # Features
+y = df['temperature'] # Target variable
+
+
 # Add bias term to features
 # X_train_bias = np.c_[np.ones(X_train.shape[0]), X_train]
 
