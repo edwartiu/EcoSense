@@ -21,3 +21,4 @@ lon2 = -118.2437 # Example longtitude for Los Angeles
 coordinates = np.array([[lat1, lon1], [lat2, lon2]])
 
 # Calculate distances between all points
+dist_matrix = distance.cdist(coordinates, coordinates, 'euclidean')
