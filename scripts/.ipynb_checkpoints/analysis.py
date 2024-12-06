@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA 
 from scipy.spatial import distance
+from sklearn.model_selection import train_test_split
 
 # Loads time series data into a Numpy array
 data = np.array(pd.read_csv('/home/masudal/EcoSense/data/enviornmental_data.csv')['temperature'])
@@ -26,3 +27,10 @@ dist_matrix = distance.cdist(coordinates, coordinates, 'euclidean')
 # Implements linear regression
 def linear_regression(X, y):
     return np.linalg.inv(X.T @ X) @ X.T @ y
+
+# Loads our dataset
+df = pd.read_csv('/home/masudal/EcoSense/data/enviornmental_data.csv')
+
+# Add bias term to features
+# X_train_bias = np.c_[np.ones(X_train.shape[0]), X_train]
+
