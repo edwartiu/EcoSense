@@ -34,7 +34,9 @@ df = pd.read_csv('/home/masudal/EcoSense/data/enviornmental_data.csv')
 X = df.drop(columns=['temperature']) # Features
 y = df['temperature'] # Target variable
 
+# Splits the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # Add bias term to features
-# X_train_bias = np.c_[np.ones(X_train.shape[0]), X_train]
+X_train_bias = np.c_[np.ones(X_train.shape[0]), X_train]
 
