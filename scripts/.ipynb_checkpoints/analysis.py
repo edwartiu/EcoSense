@@ -23,20 +23,32 @@ coordinates = np.array([[lat1, lon1], [lat2, lon2]])
 
 # Calculates distances between all points
 dist_matrix = distance.cdist(coordinates, coordinates, 'euclidean')
-
-# Implements linear regression
-def linear_regression(X, y):
-    return np.linalg.inv(X.T @ X) @ X.T @ y
+print("Distance Matrix:\n", dist_matrix)
 
 # Loads our dataset
 df = pd.read_csv('/home/masudal/EcoSense/data/enviornmental_data.csv')
 
-X = df.drop(columns=['temperature']) # Features
-y = df['temperature'] # Target variable
+# Checks if the DataFrame is loaded correctly
+print("DataFrame head:\n", df.head())
+
+X = df.drop(columns=['temperature']).values # Features
+y = df['temperature'].values # Target variable
 
 # Splits the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Add bias term to features
+# Adds bias term to features
 X_train_bias = np.c_[np.ones(X_train.shape[0]), X_train]
+
+# Implements linear regression
+def linear_regression(X, y):
+    X = np.array(X)
+    y = np.array(y)
+    return np.linalg.inv(X.T @ X) @ X.T @ y
+
+# Fit model
+# coefficients = linear_regression(X_train_bias, y_train)
+
+# print("Coefficients:", coefficients)
+
 
