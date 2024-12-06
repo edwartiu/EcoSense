@@ -31,6 +31,10 @@ df = pd.read_csv('/home/masudal/EcoSense/data/enviornmental_data.csv')
 # Checks if the DataFrame is loaded correctly
 print("DataFrame head:\n", df.head())
 
+# Ensures 'tempearture" column exists
+if 'temperature' not in df.columns:
+    raise ValueError("The 'temperature' column is missing from the dataset.")
+
 X = df.drop(columns=['temperature']).values # Features
 y = df['temperature'].values # Target variable
 
