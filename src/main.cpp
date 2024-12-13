@@ -137,7 +137,13 @@ void loop() {
   if (kSTkErrOk != uvSensor.setStartState(true)) {
     Serial.println("Error reading from UV Sensor");
   }
+
   delay(5 + uvSensor.getConversionTimeMillis());
+
+  if(kSTkErrOk != uvSensor.readAllUV()) {
+    Serial.println("Error reading UV.");
+  }
+
   float uva = uvSensor.getUVA();
   float uvb = uvSensor.getUVB();
 
@@ -212,6 +218,7 @@ void loop() {
     Serial.println(err);
   }
 
-  http.stop();
-  while (1);
+  //http.stop();
+  //while (1);
+  delay(500);
 }
